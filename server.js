@@ -7,6 +7,9 @@ var escape = require('escape-html');
 // Create an express application
 var app = express();
 
+// Trust proxy to handle X-Forwarded-For header correctly
+app.set('trust proxy', 'loopback');
+
 // Import the body-parser module
 var bodyParser = require('body-parser');
 
