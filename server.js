@@ -2,6 +2,7 @@
 var express = require('express');
 var path = require('path');
 var rateLimit = require('express-rate-limit');
+var escape = require('escape-html');
 
 // Create an express application
 var app = express();
@@ -25,7 +26,7 @@ var limiter = rateLimit({
 // Apply the rate limiter to the POST route
 app.post('/', limiter, function(req, res) {
     // Send a welcome message to the user
-    res.send('<h1 class="welcome-message">Welcome, ' + req.body.username + 
+    res.send('<h1 class="welcome-message">Welcome, ' + escape(req.body.username) + 
     '!</h1><p class="refresh-message">Refresh the page to go back</p>');
 });
 
