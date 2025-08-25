@@ -1,5 +1,6 @@
-// Import the express and express-rate-limit modules
+// Import the express, path, and express-rate-limit modules
 var express = require('express');
+var path = require('path');
 var rateLimit = require('express-rate-limit');
 
 // Create an express application
@@ -11,8 +12,8 @@ var bodyParser = require('body-parser');
 // Use body-parser middleware to parse request bodies
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Serve static files from the current directory
-app.use(express.static(__dirname));
+// Serve static files only from the "public" directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Define a rate limiter middleware
 var limiter = rateLimit({
